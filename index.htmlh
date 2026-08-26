@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un detalle para ti 🌸</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fcf6f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Contenedor del Ramo Animado */
+    .bouquet-container {
+      position: relative;
+      width: 280px;
+      height: 340px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* Envoltorio del ramo */
+    .wrapper-paper {
+      position: absolute;
+      bottom: 20px;
+      width: 0;
+      height: 0;
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-bottom: 180px solid #d4a373;
+      z-index: 2;
+      transform: scale(0);
+      animation: popUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .wrapper-ribbon {
+      position: absolute;
+      bottom: 60px;
+      width: 40px;
+      height: 15px;
+      background-color: #ffb7b2;
+      border-radius: 10px;
+      z-index: 3;
+      transform: scale(0);
+      animation: popUp 0.8s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    /* Tallos */
+    .stems {
+      position: absolute;
+      bottom: 50px;
+      width: 100px;
+      height: 180px;
+      display: flex;
+      justify-content: space-around;
+      z-index: 1;
+    }
+
+    .stem {
+      width: 6px;
+      height: 100%;
+      background-color: #588157;
+      border-radius: 4px;
+      transform-origin: bottom;
+      transform: scaleY(0);
+      animation: growStem 1.5s ease-out forwards;
+    }
+
+    .stem:nth-child(1) { transform: rotate(-15deg); animation-delay: 0.2s; }
+    .stem:nth-child(2) { transform: rotate(-7deg); animation-delay: 0.4s; }
+    .stem:nth-child(3) { transform: rotate(0deg); animation-delay: 0.1s; }
+    .stem:nth-child(4) { transform: rotate(8deg); animation-delay: 0.5s; }
+    .stem:nth-child(5) { transform: rotate(16deg); animation-delay: 0.3s; }
+
+    /* Flores generales */
+    .flower {
+      position: absolute;
+      transform: scale(0);
+      animation: popUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      z-index: 2;
+    }
+
+    /* Tulipanes Blancos */
+    .tulip {
+      width: 45px;
+      height: 55px;
+      background-color: #ffffff;
+      border-radius: 0 0 25px 25px;
+      box-shadow: inset 0 -8px 0 #f0f0f0, 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .tulip::before, .tulip::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      width: 22px;
+      height: 30px;
+      background-color: #ffffff;
+      border-radius: 20px 20px 0 0;
+    }
+    .tulip::before { left: 0; transform: rotate(-10deg); }
+    .tulip::after { right: 0; transform: rotate(10deg); }
+
+    /* Gerberas Rosas */
+    .gerbera {
+      width: 65px;
+      height: 65px;
+      background-color: #ff85a1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(255, 133, 161, 0.4);
+    }
+
+    .gerbera-center {
+      width: 22px;
+      height: 22px;
+      background-color: #6b4226;
+      border: 3px solid #ffb5a7;
+      border-radius: 50%;
+    }
+
+    /* Posiciones de las flores */
+    .f1 { top: 40px; left: 35px; animation-delay: 1.2s; }  /* Tulipán izq */
+    .f2 { top: 15px; left: 115px; animation-delay: 1.4s; } /* Tulipán centro */
+    .f3 { top: 50px; right: 35px; animation-delay: 1.3s; } /* Tulipán der */
+    .f4 { top: 100px; left: 65px; animation-delay: 1.6s; } /* Gerbera izq */
+    .f5 { top: 110px; right: 65px; animation-delay: 1.8s; }/* Gerbera der */
+
+    @keyframes growStem {
+      to { transform: scaleY(1); }
+    }
+
+    @keyframes popUp {
+      to { transform: scale(1); }
+    }
+
+    /* Estilo de Botones */
+    .btn {
+      margin-top: 30px;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 6px 18px rgba(255, 117, 140, 0.35);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 0.4s ease;
+    }
+
+    .btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Cuadros de Mensajes */
+    .card {
+      margin-top: 25px;
+      padding: 18px 24px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      display: none;
+      animation: popUp 0.4s ease forwards;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="bouquet-container">
+      <div class="stems">
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+      </div>
+
+      <div class="flower tulip f1"></div>
+      <div class="flower tulip f2"></div>
+      <div class="flower tulip f3"></div>
+
+      <div class="flower gerbera f4"><div class="gerbera-center"></div></div>
+      <div class="flower gerbera f5"><div class="gerbera-center"></div></div>
+
+      <div class="wrapper-paper"></div>
+      <div class="wrapper-ribbon"></div>
+    </div>
+
+    <button id="btn1" class="btn">Presiona aquí</button>
+
+    <div id="msg1" class="card">
+      <h2>Me caes muy mal 😒</h2>
+      <button id="btn2" class="btn visible" style="margin-top: 15px; background: linear-gradient(135deg, #4facfe, #00f2fe);">¿En serio? 🥺</button>
+    </div>
+
+    <div id="msg2" class="card">
+      <h2>ntc me caes muy bien may 💖🌸</h2>
+    </div>
+  </div>
+
+  <script>
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    const msg1 = document.getElementById('msg1');
+    const msg2 = document.getElementById('msg2');
+
+    // El botón aparece cuando concluyen de brotar las flores (2.2s)
+    setTimeout(() => {
+      btn1.classList.add('visible');
+    }, 2200);
+
+    btn1.addEventListener('click', () => {
+      btn1.style.display = 'none';
+      msg1.style.display = 'block';
+    });
+
+    btn2.addEventListener('click', () => {
+      msg1.style.display = 'none';
+      msg2.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
