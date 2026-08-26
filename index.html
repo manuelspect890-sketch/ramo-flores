@@ -1,9 +1,13 @@
+#
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Un detalle para ti 🌸</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -18,7 +22,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       padding: 20px;
       overflow: hidden;
     }
@@ -27,153 +31,441 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 360px;
       width: 100%;
+      max-width: 400px;
       text-align: center;
     }
 
-    /* Contenedor del Ramo */
+    /* =========================================
+       RAMO
+    ========================================= */
+
     .bouquet {
       position: relative;
-      width: 260px;
-      height: 320px;
-      margin-bottom: 20px;
+      width: 300px;
+      height: 350px;
+      margin-bottom: 15px;
     }
 
-    /* Papel y Moño */
+    /* =========================================
+       TALLOS
+    ========================================= */
+
+    .stem {
+      position: absolute;
+      bottom: 55px;
+      left: 50%;
+      width: 7px;
+      height: 190px;
+      background: linear-gradient(to right, #376b49, #5d9b6a);
+      border-radius: 10px;
+      transform-origin: bottom center;
+      z-index: 2;
+    }
+
+    .s1 {
+      transform: translateX(-50%) rotate(-27deg);
+    }
+
+    .s2 {
+      transform: translateX(-50%) rotate(-14deg);
+    }
+
+    .s3 {
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    .s4 {
+      transform: translateX(-50%) rotate(14deg);
+    }
+
+    .s5 {
+      transform: translateX(-50%) rotate(27deg);
+    }
+
+    /* =========================================
+       HOJAS
+    ========================================= */
+
+    .leaf {
+      position: absolute;
+      width: 35px;
+      height: 15px;
+      background: #5d9b6a;
+      border-radius: 100% 0 100% 0;
+      z-index: 3;
+    }
+
+    .leaf1 {
+      left: 73px;
+      bottom: 130px;
+      transform: rotate(-30deg);
+    }
+
+    .leaf2 {
+      left: 188px;
+      bottom: 125px;
+      transform: rotate(30deg) scaleX(-1);
+    }
+
+    .leaf3 {
+      left: 120px;
+      bottom: 105px;
+      transform: rotate(-20deg);
+    }
+
+    /* =========================================
+       FLORES
+    ========================================= */
+
+    .flower {
+      position: absolute;
+      z-index: 8;
+    }
+
+    /* =========================================
+       TULIPÁN
+    ========================================= */
+
+    .tulip {
+      width: 52px;
+      height: 58px;
+      position: absolute;
+    }
+
+    .tulip-petal {
+      position: absolute;
+      top: 5px;
+      width: 27px;
+      height: 48px;
+      background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f1f1f1
+      );
+      border: 1px solid #dddddd;
+    }
+
+    .tulip-petal.left {
+      left: 1px;
+      border-radius: 18px 5px 20px 20px;
+      transform: rotate(-10deg);
+    }
+
+    .tulip-petal.center {
+      left: 13px;
+      top: 0;
+      height: 52px;
+      border-radius: 14px 14px 18px 18px;
+      z-index: 2;
+    }
+
+    .tulip-petal.right {
+      right: 1px;
+      border-radius: 5px 18px 20px 20px;
+      transform: rotate(10deg);
+    }
+
+    .tulip-base {
+      position: absolute;
+      bottom: 0;
+      left: 7px;
+      width: 38px;
+      height: 15px;
+      background: #f5f5f5;
+      border-radius: 0 0 20px 20px;
+    }
+
+    /* =========================================
+       GERBERA
+    ========================================= */
+
+    .gerbera {
+      width: 70px;
+      height: 70px;
+    }
+
+    .petal {
+      position: absolute;
+      width: 23px;
+      height: 38px;
+      background: #ff85a1;
+      border-radius: 50% 50% 45% 45%;
+      left: 23px;
+      top: 1px;
+      transform-origin: 12px 34px;
+    }
+
+    .petal:nth-child(1) {
+      transform: rotate(0deg);
+    }
+
+    .petal:nth-child(2) {
+      transform: rotate(45deg);
+    }
+
+    .petal:nth-child(3) {
+      transform: rotate(90deg);
+    }
+
+    .petal:nth-child(4) {
+      transform: rotate(135deg);
+    }
+
+    .petal:nth-child(5) {
+      transform: rotate(180deg);
+    }
+
+    .petal:nth-child(6) {
+      transform: rotate(225deg);
+    }
+
+    .petal:nth-child(7) {
+      transform: rotate(270deg);
+    }
+
+    .petal:nth-child(8) {
+      transform: rotate(315deg);
+    }
+
+    .gerbera-center {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: 22px;
+      top: 22px;
+      background: radial-gradient(
+        circle,
+        #7b4b35 20%,
+        #5c3d2e 70%
+      );
+      border: 3px solid #ffc2d0;
+      border-radius: 50%;
+      z-index: 5;
+    }
+
+    /* =========================================
+       POSICIONES DE LAS FLORES
+    ========================================= */
+
+    .f1 {
+      top: 105px;
+      left: 25px;
+    }
+
+    .f2 {
+      top: 70px;
+      left: 78px;
+    }
+
+    .f3 {
+      top: 45px;
+      left: 125px;
+    }
+
+    .f4 {
+      top: 70px;
+      left: 175px;
+    }
+
+    .f5 {
+      top: 105px;
+      left: 220px;
+    }
+
+    /* =========================================
+       PAPEL DEL RAMO
+    ========================================= */
+
     .wrapper {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
+
       width: 0;
       height: 0;
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-      border-bottom: 170px solid #e2c4a8;
-      z-index: 10;
+
+      border-left: 90px solid transparent;
+      border-right: 90px solid transparent;
+      border-bottom: 180px solid #e2c4a8;
+
+      z-index: 6;
     }
+
+    /* Borde decorativo del papel */
+
+    .wrapper::after {
+      content: '';
+      position: absolute;
+
+      left: -90px;
+      bottom: -180px;
+
+      width: 180px;
+      height: 180px;
+
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        rgba(255,255,255,0.18) 13px,
+        transparent 15px
+      );
+
+      clip-path: polygon(
+        50% 0%,
+        100% 100%,
+        0% 100%
+      );
+    }
+
+    /* =========================================
+       MOÑO
+    ========================================= */
 
     .ribbon {
       position: absolute;
       bottom: 90px;
       left: 50%;
       transform: translateX(-50%);
-      width: 45px;
-      height: 16px;
+      width: 55px;
+      height: 18px;
       background: #ff85a1;
-      border-radius: 10px;
-      z-index: 11;
+      border-radius: 12px;
+      z-index: 12;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.12);
     }
 
-    /* Tallos */
-    .stem {
-      position: absolute;
-      bottom: 40px;
-      width: 6px;
-      height: 180px;
-      background: #4a7c59;
-      border-radius: 3px;
-      transform-origin: bottom center;
-    }
-
-    .s1 { left: 50px; transform: rotate(-24deg); }
-    .s2 { left: 90px; transform: rotate(-12deg); }
-    .s3 { left: 127px; transform: rotate(0deg); }
-    .s4 { left: 164px; transform: rotate(12deg); }
-    .s5 { left: 204px; transform: rotate(24deg); }
-
-    /* Estilos Generales de Flores */
-    .flower {
-      position: absolute;
-      z-index: 5;
-    }
-
-    /* Tulipanes Blancos */
-    .tulip {
-      width: 38px;
-      height: 48px;
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-    .tulip::before {
+    .ribbon::before,
+    .ribbon::after {
       content: '';
       position: absolute;
-      top: -8px;
-      left: 4px;
-      width: 28px;
-      height: 20px;
-      background: #f5f5f5;
-      border-radius: 12px 12px 0 0;
-    }
-
-    /* Gerberas Rosas */
-    .gerbera {
-      width: 54px;
-      height: 54px;
+      top: -10px;
+      width: 38px;
+      height: 30px;
       background: #ff85a1;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 8px rgba(255, 133, 161, 0.4);
-    }
-    .gerbera-center {
-      width: 18px;
-      height: 18px;
-      background: #5c3d2e;
-      border: 2px solid #ffc2d0;
-      border-radius: 50%;
     }
 
-    /* Ubicación EXACTA de cada flor en su tallo */
-    .f1 { top: 95px; left: 10px; }   /* Tulipán Izq */
-    .f2 { top: 65px; left: 68px; }   /* Tulipán Centro-Izq */
-    .f3 { top: 40px; left: 111px; }  /* Tulipán Centro */
-    .f4 { top: 65px; left: 154px; }  /* Gerbera Centro-Der */
-    .f5 { top: 95px; left: 200px; }  /* Gerbera Der */
+    .ribbon::before {
+      right: 35px;
+      transform: rotate(25deg);
+    }
 
-    /* Botones */
+    .ribbon::after {
+      left: 35px;
+      transform: rotate(-25deg);
+    }
+
+    /* =========================================
+       BOTONES
+    ========================================= */
+
     .btn {
       margin-top: 15px;
       padding: 14px 28px;
       font-size: 1.05rem;
       font-weight: 700;
-      color: #fff;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+
+      background: linear-gradient(
+        135deg,
+        #ff758c,
+        #ff7eb3
+      );
+
       border: none;
       border-radius: 25px;
-      box-shadow: 0 6px 18px rgba(255, 117, 140, 0.35);
+
+      box-shadow:
+        0 6px 18px rgba(255, 117, 140, 0.35);
+
       cursor: pointer;
-      transition: all 0.3s ease;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 8px 22px rgba(255, 117, 140, 0.45);
     }
 
     .btn:active {
       transform: scale(0.96);
     }
 
-    /* Tarjetas de Mensajes */
+    /* =========================================
+       TARJETAS
+    ========================================= */
+
     .card {
       margin-top: 15px;
       padding: 18px 24px;
-      background: #ffffff;
+
+      background: white;
+
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.06);
+
       display: none;
+
+      animation: aparecer 0.4s ease;
     }
 
     .card h2 {
       font-size: 1.2rem;
       color: #2c3e50;
+      line-height: 1.4;
     }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================
+       CELULAR
+    ========================================= */
+
+    @media (max-width: 450px) {
+
+      .bouquet {
+        transform: scale(0.88);
+        margin-bottom: -10px;
+      }
+
+      .card {
+        max-width: 90%;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
 
   <div class="container">
+
+    <!-- ===============================
+         RAMO
+    ================================ -->
+
     <div class="bouquet">
+
       <!-- Tallos -->
       <div class="stem s1"></div>
       <div class="stem s2"></div>
@@ -181,48 +473,186 @@
       <div class="stem s4"></div>
       <div class="stem s5"></div>
 
-      <!-- Flores en su lugar fijo -->
-      <div class="flower tulip f1"></div>
-      <div class="flower tulip f2"></div>
-      <div class="flower tulip f3"></div>
-      <div class="flower gerbera f4"><div class="gerbera-center"></div></div>
-      <div class="flower gerbera f5"><div class="gerbera-center"></div></div>
+      <!-- Hojas -->
+      <div class="leaf leaf1"></div>
+      <div class="leaf leaf2"></div>
+      <div class="leaf leaf3"></div>
 
-      <!-- Papel y Moño -->
+
+      <!-- ===============================
+           TULIPÁN 1
+      ================================ -->
+
+      <div class="flower tulip f1">
+        <div class="tulip-petal left"></div>
+        <div class="tulip-petal center"></div>
+        <div class="tulip-petal right"></div>
+        <div class="tulip-base"></div>
+      </div>
+
+
+      <!-- ===============================
+           TULIPÁN 2
+      ================================ -->
+
+      <div class="flower tulip f2">
+        <div class="tulip-petal left"></div>
+        <div class="tulip-petal center"></div>
+        <div class="tulip-petal right"></div>
+        <div class="tulip-base"></div>
+      </div>
+
+
+      <!-- ===============================
+           TULIPÁN 3
+      ================================ -->
+
+      <div class="flower tulip f3">
+        <div class="tulip-petal left"></div>
+        <div class="tulip-petal center"></div>
+        <div class="tulip-petal right"></div>
+        <div class="tulip-base"></div>
+      </div>
+
+
+      <!-- ===============================
+           GERBERA 1
+      ================================ -->
+
+      <div class="flower gerbera f4">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="gerbera-center"></div>
+
+      </div>
+
+
+      <!-- ===============================
+           GERBERA 2
+      ================================ -->
+
+      <div class="flower gerbera f5">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="gerbera-center"></div>
+
+      </div>
+
+
+      <!-- Papel -->
       <div class="wrapper"></div>
+
+      <!-- Moño -->
       <div class="ribbon"></div>
+
     </div>
 
-    <!-- Botón 1 -->
-    <button id="btn1" class="btn">Presiona aquí</button>
 
-    <!-- Mensaje 1 -->
+    <!-- ===============================
+         BOTÓN 1
+    ================================ -->
+
+    <button id="btn1" class="btn">
+      Presiona aquí
+    </button>
+
+
+    <!-- ===============================
+         MENSAJE 1
+    ================================ -->
+
     <div id="msg1" class="card">
-      <h2>Me caes muy mal </h2>
-      <button id="btn2" class="btn" style="margin-top: 15px; background: linear-gradient(135deg, #4facfe, #00f2fe);">presiona </button>
+
+      <h2>
+        Me caes muy mal 😒
+      </h2>
+
+      <button
+        id="btn2"
+        class="btn"
+        style="
+          margin-top: 15px;
+          background: linear-gradient(
+            135deg,
+            #4facfe,
+            #00f2fe
+          );
+        "
+      >
+        Presiona
+      </button>
+
     </div>
 
-    <!-- Mensaje 2 (Final) -->
+
+    <!-- ===============================
+         MENSAJE FINAL
+    ================================ -->
+
     <div id="msg2" class="card">
-      <h2>bromita cibernetica me caes muy bien may 🌸</h2>
+
+      <h2>
+        Bromita cibernética 😂<br>
+        me caes muy bien May 🌸
+      </h2>
+
     </div>
+
   </div>
 
+
+  <!-- ===============================
+       JAVASCRIPT
+  ================================ -->
+
   <script>
+
     const btn1 = document.getElementById('btn1');
     const btn2 = document.getElementById('btn2');
+
     const msg1 = document.getElementById('msg1');
     const msg2 = document.getElementById('msg2');
 
+
+    /* Primer botón */
+
     btn1.addEventListener('click', () => {
+
       btn1.style.display = 'none';
+
       msg1.style.display = 'block';
+
     });
 
+
+    /* Segundo botón */
+
     btn2.addEventListener('click', () => {
+
       msg1.style.display = 'none';
+
       msg2.style.display = 'block';
+
     });
+
   </script>
+
 </body>
 </html>
+```
