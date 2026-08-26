@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sorpresa 🌸</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fcf8f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    /* SVG del Ramo */
+    .bouquet-svg {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+    }
+
+    /* Animación de tallos creciendo */
+    .stem {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: drawStem 2s ease-in-out forwards;
+    }
+
+    /* Animación de flores floreciendo */
+    .flower {
+      transform-origin: center;
+      transform: scale(0);
+      animation: bloom 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    /* Delays para efecto progresivo */
+    .delay-1 { animation-delay: 0.5s; }
+    .delay-2 { animation-delay: 1.2s; }
+    .delay-3 { animation-delay: 1.8s; }
+    .delay-4 { animation-delay: 2.3s; }
+    .delay-5 { animation-delay: 2.8s; }
+
+    @keyframes drawStem {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes bloom {
+      to { transform: scale(1); }
+    }
+
+    /* Estilos de Botones y Mensajes */
+    .action-btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background-color: #ff6b81;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(255, 107, 129, 0.3);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .action-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .message-card {
+      margin-top: 25px;
+      padding: 18px 24px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    .message-card h2 {
+      font-size: 1.3rem;
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ilustración SVG animada del ramo -->
+  <svg class="bouquet-svg" viewBox="0 0 400 500">
+    <!-- Envoltorio/Lazo -->
+    <path class="flower delay-5" d="M 140 380 L 200 480 L 260 380 L 230 310 L 170 310 Z" fill="#eed9c4" stroke="#d4b499" stroke-width="3"/>
+    <path class="flower delay-5" d="M 170 340 Q 200 360 230 340 Q 200 320 170 340" fill="#e74c3c"/>
+
+    <!-- Tallos -->
+    <path class="stem delay-1" d="M 200 450 Q 150 250 120 180" stroke="#4ea152" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path class="stem delay-1" d="M 200 450 Q 230 270 280 190" stroke="#4ea152" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path class="stem delay-2" d="M 200 450 Q 190 260 170 140" stroke="#3b823e" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path class="stem delay-2" d="M 200 450 Q 210 260 230 140" stroke="#3b823e" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path class="stem delay-3" d="M 200 450 Q 200 240 200 110" stroke="#4ea152" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+    <!-- Tulipanes Blancos (Arriba) -->
+    <!-- Tulipán Izquierda -->
+    <g class="flower delay-3" transform="translate(120, 180)">
+      <path d="M -20 0 C -35 -30 -15 -60 0 -50 C 15 -60 35 -30 20 0 Z" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+      <path d="M -10 0 C -20 -25 0 -45 0 -45 C 0 -45 20 -25 10 0 Z" fill="#f5f5f5"/>
+    </g>
+
+    <!-- Tulipán Centro -->
+    <g class="flower delay-4" transform="translate(200, 110)">
+      <path d="M -22 0 C -38 -35 -15 -65 0 -55 C 15 -65 38 -35 22 0 Z" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+      <path d="M -12 0 C -22 -30 0 -50 0 -50 C 0 -50 22 -30 12 0 Z" fill="#f8f8f8"/>
+    </g>
+
+    <!-- Tulipán Derecha -->
+    <g class="flower delay-3" transform="translate(280, 190)">
+      <path d="M -20 0 C -35 -30 -15 -60 0 -50 C 15 -60 35 -30 20 0 Z" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+      <path d="M -10 0 C -20 -25 0 -45 0 -45 C 0 -45 20 -25 10 0 Z" fill="#f5f5f5"/>
+    </g>
+
+    <!-- Gerberas Rosas (Frente) -->
+    <!-- Gerbera Izquierda -->
+    <g class="flower delay-4" transform="translate(170, 140)">
+      <!-- Pétalos -->
+      <g fill="#ff79ac">
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(0)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(30)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(60)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(90)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(120)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(150)"/>
+      </g>
+      <!-- Centro -->
+      <circle cx="0" cy="0" r="12" fill="#ffb8d2"/>
+      <circle cx="0" cy="0" r="8" fill="#5c3a21"/>
+    </g>
+
+    <!-- Gerbera Derecha -->
+    <g class="flower delay-5" transform="translate(230, 140)">
+      <!-- Pétalos -->
+      <g fill="#ff85b3">
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(15)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(45)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(75)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(105)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(135)"/>
+        <ellipse cx="0" cy="0" rx="9" ry="35" transform="rotate(165)"/>
+      </g>
+      <!-- Centro -->
+      <circle cx="0" cy="0" r="12" fill="#ffc2d8"/>
+      <circle cx="0" cy="0" r="8" fill="#5c3a21"/>
+    </g>
+  </svg>
+
+  <!-- Botón 1 -->
+  <button id="btn1" class="action-btn">Presiona aquí</button>
+
+  <!-- Mensaje 1 -->
+  <div id="msg1" class="message-card">
+    <h2>Me caes muy mal 😒</h2>
+    <button id="btn2" class="action-btn visible" style="margin-top: 15px; background-color: #70a1ff;">¿En serio? 🥺</button>
+  </div>
+
+  <!-- Mensaje 2 (Final) -->
+  <div id="msg2" class="message-card">
+    <h2>ntc me caes muy bien may 💖🌸</h2>
+  </div>
+
+  <script>
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    const msg1 = document.getElementById('msg1');
+    const msg2 = document.getElementById('msg2');
+
+    // Mostrar el primer botón tras completarse la animación (3.2 segundos)
+    setTimeout(() => {
+      btn1.classList.add('visible');
+    }, 3200);
+
+    // Al presionar el primer botón
+    btn1.addEventListener('click', () => {
+      btn1.style.display = 'none';
+      msg1.style.display = 'block';
+    });
+
+    // Al presionar el segundo botón
+    btn2.addEventListener('click', () => {
+      msg1.style.display = 'none';
+      msg2.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
