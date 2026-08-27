@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para ti 💐</title>
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Georgia,"Times New Roman",serif;
+}
+
+
+/* =========================================================
+   FONDO ROSADO
+========================================================= */
+
+.page{
+
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #ffeef3 0%,
+            #fbd8e2 42%,
+            #f4bdce 100%
+        );
+}
+
+
+/* brillo suave */
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:70vw;
+    height:70vw;
+
+    max-width:700px;
+    max-height:700px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.22);
+
+    filter:blur(50px);
+
+    top:-30%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   FLORES QUE CAEN
+========================================================= */
+
+.falling{
+
+    position:absolute;
+
+    top:-60px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    animation:
+        caer linear infinite;
+}
+
+
+.falling span{
+
+    display:block;
+
+    font-size:
+        clamp(
+            18px,
+            3vw,
+            30px
+        );
+
+    opacity:.75;
+
+    animation:
+        girar 4s ease-in-out infinite;
+}
+
+
+@keyframes caer{
+
+    0%{
+
+        transform:
+            translateY(-80px)
+            translateX(0)
+            rotate(0deg);
+    }
+
+    100%{
+
+        transform:
+            translateY(115vh)
+            translateX(80px)
+            rotate(360deg);
+    }
+}
+
+
+@keyframes girar{
+
+    0%,
+    100%{
+        transform:rotate(-20deg);
+    }
+
+    50%{
+        transform:rotate(25deg);
+    }
+}
+
+
+/* diferentes posiciones */
+
+.f1{
+    left:5%;
+    animation-duration:9s;
+    animation-delay:0s;
+}
+
+.f2{
+    left:15%;
+    animation-duration:12s;
+    animation-delay:2s;
+}
+
+.f3{
+    left:27%;
+    animation-duration:10s;
+    animation-delay:5s;
+}
+
+.f4{
+    left:39%;
+    animation-duration:13s;
+    animation-delay:1s;
+}
+
+.f5{
+    left:51%;
+    animation-duration:9s;
+    animation-delay:4s;
+}
+
+.f6{
+    left:63%;
+    animation-duration:11s;
+    animation-delay:7s;
+}
+
+.f7{
+    left:75%;
+    animation-duration:13s;
+    animation-delay:3s;
+}
+
+.f8{
+    left:87%;
+    animation-duration:10s;
+    animation-delay:6s;
+}
+
+.f9{
+    left:94%;
+    animation-duration:14s;
+    animation-delay:1s;
+}
+
+
+/* =========================================================
+   RAMO
+========================================================= */
+
+.bouquet{
+
+    position:absolute;
+
+    left:50%;
+    top:1.5%;
+
+    width:min(460px,92vw);
+
+    height:39vh;
+
+    min-height:275px;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    animation:
+        entradaRamo 1.5s .2s ease forwards;
+
+    z-index:4;
+}
+
+
+@keyframes entradaRamo{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateX(-50%)
+            translateY(-25px)
+            scale(.9);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* movimiento */
+
+.bouquet-svg{
+
+    width:100%;
+    height:100%;
+
+    overflow:visible;
+
+    transform-origin:
+        50% 100%;
+
+    animation:
+        movimientoRamo 6s ease-in-out infinite;
+}
+
+
+@keyframes movimientoRamo{
+
+    0%,
+    100%{
+        transform:rotate(0deg);
+    }
+
+    50%{
+        transform:rotate(.7deg);
+    }
+}
+
+
+/* =========================================================
+   MOVIMIENTO FLORES
+========================================================= */
+
+.flower-move{
+
+    transform-box:fill-box;
+
+    transform-origin:
+        center bottom;
+
+    animation:
+        movimientoFlor 5s ease-in-out infinite;
+}
+
+
+.flower-move:nth-of-type(2){
+    animation-delay:.5s;
+}
+
+.flower-move:nth-of-type(3){
+    animation-delay:1s;
+}
+
+.flower-move:nth-of-type(4){
+    animation-delay:.8s;
+}
+
+.flower-move:nth-of-type(5){
+    animation-delay:1.4s;
+}
+
+.flower-move:nth-of-type(6){
+    animation-delay:.3s;
+}
+
+
+@keyframes movimientoFlor{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-2px);
+    }
+}
+
+
+/* =========================================================
+   FRASE
+========================================================= */
+
+.collage{
+
+    position:absolute;
+
+    left:50%;
+
+    top:42%;
+
+    width:min(680px,95vw);
+
+    transform:
+        translateX(-50%);
+
+    text-align:center;
+
+    opacity:0;
+
+    animation:
+        mostrarFrase 1s 1.6s ease forwards;
+
+    z-index:10;
+}
+
+
+@keyframes mostrarFrase{
+
+    to{
+        opacity:1;
+    }
+}
+
+
+/* =========================================================
+   SORPRESA
+========================================================= */
+
+.sorpresa{
+
+    margin-bottom:10px;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size:
+        clamp(
+            30px,
+            7vw,
+            52px
+        );
+
+    color:#b72f60;
+
+    opacity:0;
+
+    transform:
+        translateY(-20px)
+        scale(.7);
+
+    text-shadow:
+        0 3px 10px
+        rgba(150,50,90,.18);
+
+    pointer-events:none;
+}
+
+
+.sorpresa.mostrar{
+
+    animation:
+        aparecerSorpresa 1s ease forwards;
+}
+
+
+@keyframes aparecerSorpresa{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(-25px)
+            scale(.6)
+            rotate(-5deg);
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:
+            translateY(5px)
+            scale(1.1)
+            rotate(3deg);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   PALABRAS
+========================================================= */
+
+.word{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:4px;
+
+    margin:
+        2px 0 7px;
+}
+
+
+/* =========================================================
+   LETRAS
+========================================================= */
+
+.letter{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:42px;
+
+    height:58px;
+
+    padding:2px 4px;
+
+    font-size:
+        clamp(
+            40px,
+            6.5vw,
+            64px
+        );
+
+    line-height:1;
+
+    position:relative;
+
+    color:#8c174a;
+
+    animation:
+        entradaLetra .55s ease both;
+}
+
+
+.letter:nth-child(2n){
+    color:#c43d62;
+}
+
+.letter:nth-child(3n){
+    color:#18151b;
+}
+
+.letter:nth-child(4n){
+    color:#e45b86;
+}
+
+.letter:nth-child(5n){
+    color:#81304b;
+}
+
+
+/* inclinaciones */
+
+.letter:nth-child(1){
+    transform:rotate(-7deg);
+}
+
+.letter:nth-child(2){
+    transform:
+        rotate(3deg)
+        translateY(3px);
+}
+
+.letter:nth-child(3){
+    transform:rotate(-2deg);
+}
+
+.letter:nth-child(4){
+    transform:
+        rotate(5deg)
+        translateY(-2px);
+}
+
+.letter:nth-child(5){
+    transform:rotate(-4deg);
+}
+
+.letter:nth-child(6){
+    transform:rotate(2deg);
+}
+
+.letter:nth-child(7){
+    transform:rotate(-5deg);
+}
+
+.letter:nth-child(8){
+    transform:rotate(4deg);
+}
+
+
+@keyframes entradaLetra{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(20px)
+            rotate(0deg)
+            scale(.8);
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+/* papel */
+
+.cut{
+
+    position:absolute;
+
+    inset:3px;
+
+    z-index:-1;
+
+    background:
+        rgba(255,255,255,.23);
+
+    border:
+        1px solid
+        rgba(140,23,74,.08);
+}
+
+
+/* =========================================================
+   TEXTO PEQUEÑO
+========================================================= */
+
+.sub{
+
+    margin-top:8px;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size:
+        clamp(
+            19px,
+            3.5vw,
+            30px
+        );
+
+    color:#ad6373;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+button{
+
+    position:absolute;
+
+    bottom:5%;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    border:0;
+
+    border-radius:999px;
+
+    padding:
+        14px 29px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:17px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c9577b,
+            #a93662
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(125,42,70,.25);
+
+    cursor:pointer;
+
+    transition:
+        .25s;
+
+    z-index:20;
+}
+
+
+button:hover{
+
+    transform:
+        translateX(-50%)
+        scale(1.06);
+}
+
+
+button:active{
+
+    transform:
+        translateX(-50%)
+        scale(.96);
+}
+
+
+/* =========================================================
+   OCULTAR BOTÓN
+========================================================= */
+
+.hidden{
+
+    opacity:0 !important;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media(max-width:600px){
+
+    .bouquet{
+
+        top:1%;
+
+        width:100vw;
+
+        height:34vh;
+
+        min-height:235px;
+    }
+
+
+    .collage{
+
+        top:38%;
+
+        width:96vw;
+    }
+
+
+    .sorpresa{
+
+        margin-bottom:5px;
+
+        font-size:34px;
+    }
+
+
+    .word{
+
+        gap:1px;
+
+        margin-bottom:4px;
+    }
+
+
+    .letter{
+
+        min-width:30px;
+
+        height:48px;
+
+        padding:0 2px;
+
+        font-size:
+            clamp(
+                34px,
+                10vw,
+                48px
+            );
+    }
+
+
+    .sub{
+
+        margin-top:4px;
+
+        font-size:21px;
+    }
+
+
+    button{
+
+        bottom:3%;
+
+        padding:
+            12px 23px;
+
+        font-size:16px;
+    }
+}
+
+
+@media(max-width:380px){
+
+    .bouquet{
+        height:31vh;
+    }
+
+    .collage{
+        top:37%;
+    }
+
+    .letter{
+        min-width:27px;
+        font-size:33px;
+    }
+
+    .sorpresa{
+        font-size:30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page" id="page">
+
+
+<!-- =====================================================
+     FLORES/PÉTALOS QUE CAEN
+===================================================== -->
+
+<div class="falling f1"><span>🌸</span></div>
+<div class="falling f2"><span>🌷</span></div>
+<div class="falling f3"><span>🌸</span></div>
+<div class="falling f4"><span>🌺</span></div>
+<div class="falling f5"><span>🌸</span></div>
+<div class="falling f6"><span>🌷</span></div>
+<div class="falling f7"><span>🌸</span></div>
+<div class="falling f8"><span>🌺</span></div>
+<div class="falling f9"><span>🌸</span></div>
+
+
+<!-- =====================================================
+     RAMO
+===================================================== -->
+
+<div class="bouquet">
+
+<svg
+    class="bouquet-svg"
+    viewBox="0 0 500 430"
+    xmlns="http://www.w3.org/2000/svg"
+>
+
+
+<!-- sombra -->
+
+<ellipse
+    cx="250"
+    cy="395"
+    rx="100"
+    ry="16"
+    fill="#000"
+    opacity=".07"
+/>
+
+
+<!-- =====================================================
+     TALLOS
+===================================================== -->
+
+<g
+    fill="none"
+    stroke-linecap="round"
+>
+
+<path
+    d="M250 385 C220 320 145 245 130 130"
+    stroke="#3d7045"
+    stroke-width="7"
+/>
+
+<path
+    d="M250 385 C225 300 190 220 185 105"
+    stroke="#477b4b"
+    stroke-width="7"
+/>
+
+<path
+    d="M250 390 C250 290 250 180 250 75"
+    stroke="#356a3f"
+    stroke-width="8"
+/>
+
+<path
+    d="M250 385 C270 290 310 210 315 110"
+    stroke="#477b4b"
+    stroke-width="7"
+/>
+
+<path
+    d="M250 385 C285 310 350 250 370 145"
+    stroke="#35683e"
+    stroke-width="7"
+/>
+
+<path
+    d="M250 390 C245 315 230 265 225 185"
+    stroke="#427747"
+    stroke-width="7"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     HOJAS
+===================================================== -->
+
+<g>
+
+<path
+    d="
+        M207 300
+        C155 285 112 245 95 205
+        C145 215 188 240 220 275
+        Z
+    "
+    fill="#477b47"
+/>
+
+
+<path
+    d="
+        M206 298
+        C160 275 130 245 105 215
+    "
+    fill="none"
+    stroke="#87a66b"
+    stroke-width="2"
+/>
+
+
+<path
+    d="
+        M185 235
+        C140 205 120 165 125 125
+        C165 150 185 190 195 225
+        Z
+    "
+    fill="#5b8b50"
+/>
+
+
+<path
+    d="
+        M185 232
+        C157 200 140 165 130 135
+    "
+    fill="none"
+    stroke="#a0b77c"
+    stroke-width="2"
+/>
+
+
+<path
+    d="
+        M225 320
+        C185 285 170 240 175 195
+        C210 225 225 270 235 310
+        Z
+    "
+    fill="#3f7444"
+/>
+
+
+<path
+    d="
+        M292 305
+        C340 285 380 245 400 205
+        C350 215 315 245 282 280
+        Z
+    "
+    fill="#477b47"
+/>
+
+
+<path
+    d="
+        M295 302
+        C340 275 370 245 393 215
+    "
+    fill="none"
+    stroke="#91ad70"
+    stroke-width="2"
+/>
+
+
+<path
+    d="
+        M315 245
+        C360 215 382 170 380 130
+        C342 150 320 195 305 230
+        Z
+    "
+    fill="#568650"
+/>
+
+
+<path
+    d="
+        M315 240
+        C345 205 365 170 375 140
+    "
+    fill="none"
+    stroke="#9bb477"
+    stroke-width="2"
+/>
+
+
+<path
+    d="
+        M260 315
+        C285 275 292 230 285 190
+        C260 220 250 265 250 300
+        Z
+    "
+    fill="#3d7041"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     FLOR ROSA 1
+===================================================== -->
+
+<g class="flower-move">
+
+<ellipse
+    cx="130"
+    cy="120"
+    rx="30"
+    ry="48"
+    fill="#d8798d"
+/>
+
+<ellipse
+    cx="150"
+    cy="105"
+    rx="31"
+    ry="52"
+    fill="#e995a5"
+/>
+
+<ellipse
+    cx="126"
+    cy="100"
+    rx="25"
+    ry="48"
+    fill="#f1b1bb"
+/>
+
+<ellipse
+    cx="145"
+    cy="125"
+    rx="27"
+    ry="45"
+    fill="#c9677d"
+/>
+
+<path
+    d="
+        M108 115
+        C115 75 130 68 142 78
+        C150 65 170 80 172 105
+        C172 145 150 160 130 158
+        C110 150 103 135 108 115
+        Z
+    "
+    fill="none"
+    stroke="#f5cbd1"
+    stroke-width="3"
+    opacity=".65"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     FLOR BLANCA 2
+===================================================== -->
+
+<g class="flower-move">
+
+<ellipse
+    cx="185"
+    cy="100"
+    rx="27"
+    ry="49"
+    fill="#e5e1db"
+/>
+
+<ellipse
+    cx="205"
+    cy="91"
+    rx="28"
+    ry="53"
+    fill="#faf9f5"
+/>
+
+<ellipse
+    cx="181"
+    cy="82"
+    rx="23"
+    ry="46"
+    fill="#ffffff"
+/>
+
+<ellipse
+    cx="203"
+    cy="111"
+    rx="25"
+    ry="43"
+    fill="#e8e4de"
+/>
+
+<path
+    d="
+        M165 102
+        C170 65 184 54 197 68
+        C207 53 224 72 225 100
+        C224 133 205 150 187 147
+        C169 140 162 122 165 102
+        Z
+    "
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3"
+    opacity=".8"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     FLOR ROSA 3
+===================================================== -->
+
+<g class="flower-move">
+
+<ellipse
+    cx="250"
+    cy="73"
+    rx="30"
+    ry="55"
+    fill="#d6788c"
+/>
+
+<ellipse
+    cx="270"
+    cy="72"
+    rx="30"
+    ry="58"
+    fill="#e998a7"
+/>
+
+<ellipse
+    cx="247"
+    cy="62"
+    rx="27"
+    ry="53"
+    fill="#f2b3bc"
+/>
+
+<ellipse
+    cx="265"
+    cy="92"
+    rx="27"
+    ry="48"
+    fill="#cb657b"
+/>
+
+<path
+    d="
+        M228 82
+        C232 38 247 27 259 43
+        C270 26 289 47 290 77
+        C289 116 268 134 248 130
+        C229 123 222 104 228 82
+        Z
+    "
+    fill="none"
+    stroke="#f7cbd1"
+    stroke-width="3"
+    opacity=".7"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     FLOR BLANCA 4
+===================================================== -->
+
+<g class="flower-move">
+
+<ellipse
+    cx="315"
+    cy="105"
+    rx="28"
+    ry="49"
+    fill="#dedbd5"
+/>
+
+<ellipse
+    cx="335"
+    cy="95"
+    rx="29"
+    ry="53"
+    fill="#faf9f4"
+/>
+
+<ellipse
+    cx="312"
+    cy="87"
+    rx="24"
+    ry="47"
+    fill="#ffffff"
+/>
+
+<ellipse
+    cx="333"
+    cy="115"
+    rx="26"
+    ry="44"
+    fill="#e4e0da"
+/>
+
+<path
+    d="
+        M295 105
+        C300 67 315 57 327 72
+        C337 56 355 75 357 103
+        C356 136 337 152 318 149
+        C299 143 291 125 295 105
+        Z
+    "
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3"
+    opacity=".8"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     FLOR ROSA 5
+===================================================== -->
+
+<g class="flower-move">
+
+<ellipse
+    cx="370"
+    cy="145"
+    rx="29"
+    ry="48"
+    fill="#d16c83"
+/>
+
+<ellipse
+    cx="390"
+    cy="132"
+    rx="29"
+    ry="51"
+    fill="#e88c9f"
+/>
+
+<ellipse
+    cx="366"
+    cy="126"
+    rx="25"
+    ry="46"
+    fill="#f0aab5"
+/>
+
+<ellipse
+    cx="387"
+    cy="153"
+    rx="26"
+    ry="43"
+    fill="#c75b74"
+/>
+
+<path
+    d="
+        M350 145
+        C355 107 369 98 381 112
+        C390 97 409 115 411 142
+        C410 174 390 191 371 187
+        C353 181 345 165 350 145
+        Z
+    "
+    fill="none"
+    stroke="#f6c2c9"
+    stroke-width="3"
+    opacity=".7"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     FLOR BLANCA 6
+===================================================== -->
+
+<g class="flower-move">
+
+<ellipse
+    cx="225"
+    cy="180"
+    rx="28"
+    ry="48"
+    fill="#ddd9d2"
+/>
+
+<ellipse
+    cx="246"
+    cy="170"
+    rx="29"
+    ry="52"
+    fill="#f7f5f0"
+/>
+
+<ellipse
+    cx="222"
+    cy="162"
+    rx="24"
+    ry="46"
+    fill="#ffffff"
+/>
+
+<ellipse
+    cx="244"
+    cy="191"
+    rx="26"
+    ry="43"
+    fill="#e4e0da"
+/>
+
+<path
+    d="
+        M205 180
+        C210 143 225 132 237 147
+        C247 131 265 150 267 178
+        C266 211 247 227 228 224
+        C209 218 201 200 205 180
+        Z
+    "
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3"
+    opacity=".8"
+/>
+
+</g>
+
+
+<!-- =====================================================
+     ENVOLTURA
+===================================================== -->
+
+<path
+    d="
+        M90 220
+        Q250 255 410 220
+
+        L330 392
+
+        Q250 418 170 392
+
+        Z
+    "
+    fill="#c6ab82"
+/>
+
+
+<path
+    d="
+        M102 220
+        Q250 252 398 220
+
+        L322 380
+
+        Q250 400 178 380
+
+        Z
+    "
+    fill="#eadfcf"
+/>
+
+
+<!-- pliegues -->
+
+<path
+    d="
+        M102 220
+        L190 386
+        L250 399
+        L150 238
+        Z
+    "
+    fill="#d0b791"
+    opacity=".8"
+/>
+
+
+<path
+    d="
+        M398 220
+        L310 386
+        L250 399
+        L350 238
+        Z
+    "
+    fill="#b99b70"
+    opacity=".7"
+/>
+
+
+<path
+    d="
+        M250 252
+        L250 400
+    "
+    stroke="#ffffff"
+    stroke-width="3"
+    opacity=".35"
+/>
+
+
+<!-- =====================================================
+     LISTÓN
+===================================================== -->
+
+<path
+    d="
+        M250 347
+        C225 330 195 332 174 350
+        C195 372 225 373 250 355
+        Z
+    "
+    fill="#d99baa"
+/>
+
+
+<path
+    d="
+        M250 347
+        C275 330 305 332 326 350
+        C305 372 275 373 250 355
+        Z
+    "
+    fill="#d18b9e"
+/>
+
+
+<path
+    d="
+        M238 357
+        L205 402
+        L235 388
+        L250 357
+        Z
+    "
+    fill="#c98296"
+/>
+
+
+<path
+    d="
+        M262 357
+        L295 402
+        L265 388
+        L250 357
+        Z
+    "
+    fill="#b96f84"
+/>
+
+
+<!-- nudo -->
+
+<circle
+    cx="250"
+    cy="351"
+    r="15"
+    fill="#a96f57"
+/>
+
+
+<circle
+    cx="250"
+    cy="351"
+    r="9"
+    fill="#c48a70"
+/>
+
+
+<!-- corazón -->
+
+<path
+    d="
+        M250 370
+        C245 361 230 365 230 375
+        C230 386 250 396 250 396
+        C250 396 270 386 270 375
+        C270 365 255 361 250 370
+        Z
+    "
+    fill="#f4d9d7"
+    stroke="#b88772"
+    stroke-width="2"
+/>
+
+
+</svg>
+
+</div>
+
+
+<!-- =====================================================
+     FRASE
+========================================================= -->
+
+<div
+    class="collage hidden"
+    id="collage"
+>
+
+
+    <!-- SORPRESA -->
+
+    <div
+        class="sorpresa"
+        id="sorpresa"
+    >
+        ✨ ¡SORPRESA! ✨
+    </div>
+
+
+    <!-- PRIMERA PALABRA -->
+
+    <div class="word">
+
+        <span class="letter">
+            <i class="cut"></i>
+            Q
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            u
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            e
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            r
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            e
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            r
+        </span>
+
+    </div>
+
+
+    <!-- SEGUNDA PALABRA -->
+
+    <div class="word">
+
+        <span class="letter">
+            <i class="cut"></i>
+            H
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            a
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            s
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            t
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            a
+        </span>
+
+    </div>
+
+
+    <!-- TERCERA PALABRA -->
+
+    <div class="word">
+
+        <span class="letter">
+            <i class="cut"></i>
+            Q
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            u
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            e
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            d
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            u
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            e
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            l
+        </span>
+
+        <span class="letter">
+            <i class="cut"></i>
+            a
+        </span>
+
+    </div>
+
+
+    <div class="sub">
+        soy de amor
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN
+========================================================= -->
+
+<button id="btn">
+    Presiona aquí 💕
+</button>
+
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const page =
+    document.getElementById("page");
+
+const collage =
+    document.getElementById("collage");
+
+const sorpresa =
+    document.getElementById("sorpresa");
+
+const btn =
+    document.getElementById("btn");
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+btn.addEventListener(
+    "click",
+    () => {
+
+        /* mostrar frase */
+
+        collage.classList.remove(
+            "hidden"
+        );
+
+
+        /* activar sorpresa */
+
+        sorpresa.classList.add(
+            "mostrar"
+        );
+
+
+        /* cambiar botón */
+
+        btn.textContent =
+            "♡";
+
+
+        btn.style.opacity =
+            ".55";
+
+
+        /* ocultar botón */
+
+        setTimeout(
+            () => {
+
+                btn.classList.add(
+                    "hidden"
+                );
+
+            },
+            1200
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
